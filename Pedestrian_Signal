@@ -1,0 +1,171 @@
+int redR = 3;
+int redC =2;
+int yellow = 4;
+int greenR = 5;
+int greenC = 1;
+int buttonR = 7;
+int buttonC = 8;
+void setup()
+{
+pinMode(buttonR, INPUT);
+pinMode(buttonC, INPUT);
+digitalWrite(greenR, HIGH);
+digitalWrite(greenC, LOW);
+digitalWrite(redR, LOW);
+digitalWrite(redC, HIGH);
+digitalWrite(yellow, LOW);
+}
+
+void loop()
+{
+if (digitalRead(buttonR)|| digitalRead(buttonR) == LOW)
+{
+delay(2000); 
+if (digitalRead(buttonR)|| digitalRead(buttonR) == LOW)
+{
+
+trafficLights();
+}
+}
+
+else
+{
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, HIGH);
+digitalWrite(yellow, LOW);
+
+digitalWrite(redR, LOW);
+digitalWrite(redR, HIGH);
+delay(3000);
+}
+}
+
+void trafficLights()
+{
+// greenR off, yellow on for 2 seconds
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, HIGH);
+digitalWrite(redR, LOW);
+digitalWrite(redC, LOW);
+delay(3000);
+if (digitalRead(buttonR) == HIGH )
+{
+// turn off red and yellow, then turn on green
+led();
+
+// green off, yellow on for 2 seconds
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, HIGH);
+digitalWrite(redR, LOW);
+digitalWrite(redC, LOW);
+delay(1000);
+}
+
+// turn off yellow, then turn red on for 6 seconds
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, HIGH);
+digitalWrite(yellow, LOW);
+
+digitalWrite(redR, HIGH);
+digitalWrite(redC, LOW);
+delay(4000);
+if (digitalRead(buttonR) == HIGH )
+{
+// green off, yellow on for 2 seconds
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, HIGH);
+digitalWrite(redR, LOW);
+digitalWrite(redC, LOW);
+delay(3000);
+
+// turn off red and yellow, then turn on green
+led();
+}
+
+// red and yellow on for 2 seconds (red is already on though)
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, HIGH);
+digitalWrite(redR, HIGH);
+digitalWrite(redC, LOW);
+delay(2000);
+if (digitalRead(buttonR) == HIGH )
+{
+// green off, yellow on for 2 seconds
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, HIGH);
+digitalWrite(redR, LOW);
+digitalWrite(redC, LOW);
+delay(3000);
+
+// turn off red and yellow, then turn on green
+led();
+}
+
+// turn off red and yellow, then turn on green
+digitalWrite(greenR, HIGH);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, LOW);
+digitalWrite(redR, LOW);
+digitalWrite(redC, HIGH);
+delay(3000);
+if (digitalRead(buttonR) == HIGH )
+{
+// turn off red and yellow, then turn on green
+led();
+}
+}
+
+void led()
+{
+
+switch (digitalRead(buttonC) )
+{
+case HIGH:
+// turn off red and yellow, then turn on green
+digitalWrite(greenC, HIGH);
+digitalWrite(greenR, LOW);
+digitalWrite(yellow, LOW);
+digitalWrite(redR, HIGH);
+digitalWrite(redC, LOW);
+delay(5000);
+
+switch (digitalRead(buttonR) )
+{
+case HIGH:
+// turn off red and yellow, then turn on green
+digitalWrite(greenR, HIGH);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, LOW);
+digitalWrite(redR, LOW);
+digitalWrite(redC, HIGH);
+delay(5000);
+break;
+default:
+
+// greenR off, yellow on for 2 seconds
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, HIGH);
+digitalWrite(redR, LOW);
+digitalWrite(redC, LOW);
+delay(3000);
+break;
+}
+break;
+default:
+// greenR off, yellow on for 2 seconds
+digitalWrite(greenR, LOW);
+digitalWrite(greenC, LOW);
+digitalWrite(yellow, HIGH);
+digitalWrite(redR, LOW);
+digitalWrite(redC, LOW);
+delay(3000);
+break;
+}
+
+}
